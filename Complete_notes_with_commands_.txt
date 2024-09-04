@@ -1,0 +1,221 @@
+node -v
+npm -v
+nvm -v
+tsc -v
+java --version
+python --version
+npx wdio --version
+npm ls webdriverio
+
+
+npm install								    => to install/ upgrade node packages
+npm install -g typescript 					=> to install typescript
+
+npm init   (or)
+npm init -y  								=> package.json file created. -> it makes simple project as node project -> to initialize project as Node.js project
+
+npm i --save-dev @wdio/cli (or)
+npm install @wdio/cli      				    =>  node_modules folder, package-lock.json file created contains all dependency -> command to install WebdriverIO runner in 												our Node.js project
+
+npm init wdio (or)
+npx wdio config     						=> it will configure the setup of the project. This is also know WDIO Configuration Helper. It is used to run configuration 												wizard
+
+npm install wdio-chromedriver-service --save-dev
+npm install chromedriver --save-dev (or)
+npm install chromedriver --chromedriver_version=LATEST
+npm install typescript --save-dev
+npm install ts-node --save-dev
+npm install async --save-dev
+webdriverio/async
+
+withing package.json file:
+"dependencies": {
+    "@wdio/cli": "^9.0.7",
+    "webdriverio": "^9.0.7"
+  },	
+
+"devDependencies": {
+    "@wdio/allure-reporter": "^9.0.4",
+    "@wdio/cucumber-framework": "^9.0.6",
+    "@wdio/local-runner": "^9.0.7",
+    "@wdio/spec-reporter": "^9.0.7",
+    "chromedriver": "^127.0.3",
+    "expect": "^29.7.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4",
+    "wdio-chromedriver-service": "^8.1.1"
+  }
+
+npm install expect 
+npm install expect-webdriverio  	=> to install expect & expect-webdriver to solve tsconfig.json schema error
+
+
+Note: The 'tsConfigPath' option is deprecated and will be removed in the next major release. So comment this line => tsConfigPath: './tsconfig.json' in wdio.conf.ts file
+
+npm run wdio		      (or)   
+npx wdio wdio.conf.js           
+npx wdio run ./wdio.conf.ts			 => to run your test suite
+
+Test URL: https://the-internet.herokuapp.com/login
+
+Tidy Gherkin - Chrome web extension/ plugin to complete step defs for feature file
+
+shift + cmd + k => to delete current line in mac
+shift + ctrl + k => to delete current line in windows
+shift + option + up/ down arrow key => to duplicate line in mac
+shift + alt + up/ down arrow key => to duplicate line in windows
+
+Cuke Step Definition generator => is a VS code extension to generate auto step definition for the specified feature file
+
+npx wdio --spec ./features/login.demo.feature => to run specific feature & its respective step definition files
+
+https://www.youtube.com/watch?v=HpoCx2a9l5w - Easiest way to create WebdriverIO Cucumber BDD Project with DEMO - Automation Step by Step
+
+
+https://webdriver.io/docs/selectors/
+http://v4.webdriver.io/api/property/getUrl.html
+https://webdriver.io/docs/api/expect-webdriverio/
+
+
+
+npm wdio config -y
+
+npm init wdio@latest ./repro   => create and initialize 'repro' project in single command thereby repro project will become node project
+
+
+selectors/example.html
+<header>
+    <h1>Welcome to my Page</h1>
+    <a href="https://webdriver.io">WebdriverIO</a>
+    <i class="someElem" id="elem">WebdriverIO is the best</i>
+    <my-element>WebdriverIO is the best</my-element>
+    <input name="username" value="foobar" />
+</header>
+
+
+npx allure serve allure-results   => command to generate allure reports
+
+ERROR @wdio/runner: Error [ERR_PACKAGE_PATH_NOT_EXPORTED]: No "exports" main defined /@wdio/logger/package.json
+error resolution steps ::: 
+rm -rf package-lock.json 
+rm -rf node_modules.json 
+npm uninstall "@wdio/cli" --no-save
+npm install
+
+
+getter  -> (getter) PracticePage.header: void
+get header(){
+        return
+    }
+    
+-> (getter) PracticePage.header: ChainablePromiseElement
+get header(){
+        return $('#the7-body .wf-wrap h1');
+    }
+
+supertest => https://www.npmjs.com/package/supertest  => super test is a library of npm module which help us in hitting any API, get the reponse and validate the response 
+
+npm install supertest --save-dev
+npm install @types/supertest --save-dev
+
+
+div#allheaders input -> 4 matches
+div#allheaders input.input-medium -> 2 matches
+div#allheaders input[css='1'] -> 1 match
+div#allheaders div.controls>input[css='1'] ->1 match
+div#allheaders div.controls>input[css='2'] ->1 match
+
+CSS locators: https://www.lambdatest.com/learning-hub/css-selectors
+website: https://resttesttest.com/
+css selectors:
+div#allheaders>div -> 3 elements matching
+div#allheaders>div:first-of-type -> 1 matching
+div#allheaders>div:last-of-type
+div#allheaders>div:nth-of-type(2)
+div#allheaders>div:first-child
+div#allheaders>div:last-child
+
+CSS locators: https://toolsqa.com/selenium-webdriver/css-selectors-in-selenium/#:~:text=Here%20we%20started%20with%20the,index%20of%20the%20required%20element.
+textarea#currentAddress[placeholder='Current Address']
+textarea.form-control[placeholder='Current Address']
+
+#allparameters .httpparameter input.fakeinputname -> 2 matches
+div#allparameters .httpparameter:last-of-type div>div.span2 input -> 1 match
+div#allparameters .httpparameter:last-of-type div>div.span3 input -> 1 match
+
+
+Run node project using tag expression: (Tags can be applied/entered at scenario or feature level)
+npm run api_run -- --cucumberOpts.tagExpression='@Regression' => 1 scenario with this tag will run
+OR
+wdio run ./wdio.conf.ts --spec ./test/features/E2E_User.feature --cucumberOpts.tagExpression=@Regression
+
+(or)
+npm run api_run -- --cucumberOpts.tagExpression='@GETCall or @POSTCall'  => 2 scenarios having either of the tags will run
+OR
+wdio run ./wdio.conf.ts --spec ./test/features/E2E_User.feature --cucumberOpts.tagExpression=@GETCall or @POSTCall
+
+(or)
+npm run api_run -- --cucumberOpts.tagExpression='@GETCall and @POSTCall'  => scenarios having both of the tags in it will only run
+OR
+wdio run ./wdio.conf.ts --spec ./test/features/E2E_User.feature --cucumberOpts.tagExpression=@GETCall and @POSTCall
+
+
+npm run wdio -- --cucumberOpts.tagExpression='@Login'
+OR
+wdio run ./wdio.conf.ts --cucumberOpts.tagExpression=@Login
+
+npm run wdio -- --cucumberOpts.tagExpression='@DEV'   => Once login scenario executed for DEV environment with @DEV tag having related Test data only for Valid username of Examples
+
+npm run wdio -- --cucumberOpts.tagExpression='@QA'    => Once login scenario executed for QA environment with @QA tag having related Test data only for Invalid username of Examples
+
+npm run wdio -- --cucumberOpts.tagExpression='@QA or @DEV'  => Executed login scenario twice in this case
+npm run wdio -- --spec ./test/features/waits.feature
+
+
+Install cucumberautocomplete extension from VS code by going to extension => Cucumber (Gherkin) Full Support by Alexander Krechik
+
+
+npm install tsconfig-paths --save-dev  => use this command when failed to locate src/config/APIConfig file containing base URL(or error loading url). And in wdio.config.ts test runner configure this -> requireModule: ['tsconfig-paths/register']
+This will Load node modules according to tsconfig paths, in run-time or via API.
+
+npm install -g npm-check-updates    => install npm-check-updates which upgrades your package.json dependencies to the latest versions
+ncu     => to check current packages/dependencies with latest packages/dependencies available
+ncu -u   => to upgrade package.json 
+npm install   => to install new versions to node_modules folder which replaces old content in folder after upgrade using ncu -u command
+
+
+npx wdio run wdio.conf.ts   => This will run all 8 feature files available in project
+npx wdio run wdio.conf.ts --suite smoke   => this will run smoke suite
+npx wdio run wdio.conf.ts --suite regression  => this will run regression suite
+npm run smoke.  => runs suite from package.json
+npm run regression
+
+
+https://sites.google.com/chromium.org/driver/capabilities.   =>to set chrome download directory
+ChromeOptions options = new ChromeOptions();
+Map<String, Object> prefs = new HashMap<String, Object>();
+prefs.put("download.default_directory", "/directory/path");
+options.setExperimentalOption("prefs", prefs);
+
+goog:chromeOptions dictionary in desired capabilities.  ->in JS
+cwd  => current working directory
+
+capabilities: [
+    {
+        browserName: 'chrome',
+        acceptInsecureCerts: true,
+        "goog: chromeOptions" : {
+            "prefs": {
+                "download.default_directory": path.join(process.cwd() + 'downloads')
+            }
+        }
+    }],
+
+npm i allure-commandline --save-dev.   => install allure commandline in node project  
+npx allure serve allure-results   => command to generate allure reports server and open report in browser
+(OR)
+npx allure generate allure-results && allure open    => command to generate allure-report folder in project 
+npx allure generate allure-results --clean && allure open   => command to clearn existing allure-report and generate new allure-report using allure-results and opens the allure-report in browser
+
+npx wdio --spec ./test/features/regression/E2E_User.feature  
+

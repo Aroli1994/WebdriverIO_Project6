@@ -1,0 +1,35 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "module": "ESNext",
+        "target": "es2022",
+        "baseUrl": ".",
+        "lib": [
+            "es2022",
+            "dom"
+        ],
+        "types": [
+            "node",
+            "@wdio/globals/types",
+            "expect-webdriverio",
+            "@wdio/cucumber-framework"
+        ],
+        "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true,
+        "noEmit": true,
+        "allowImportingTsExtensions": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "strict": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitAny": false
+    },
+    "include": [
+        "test",
+        "wdio.conf.ts",
+        "src/pages/Users.page.ts",
+        "src/pages/form.page.ts" 
+    ]
+}
